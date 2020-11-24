@@ -65,8 +65,14 @@ public class MainFrame extends JFrame implements Runnable {
         boxes[x][y].setColor(color);
     }
 
+    //TODO
+//    private boolean canMoveFigure() {
+//
+//    }
+
     private void moveFigure(int sx, int sy) {
-        coord = new Coord(coord.getX() + sx, coord.getY() + sy);
+        //if (canMoveFigure())
+            coord = new Coord(coord.getX() + sx, coord.getY() + sy);
     }
 
     private void turnFigure() {

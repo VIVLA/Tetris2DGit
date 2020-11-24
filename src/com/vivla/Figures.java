@@ -31,12 +31,38 @@ public enum Figures {
     Z2 (2, 0,  1, 1,  2, 1,  1, 2);
 
     public ArrayList<Coord> cords;
+    public Coord leftTopCoord;
+    public Coord rightBottomCoord;
 
     Figures(int...dots) {
         cords = new ArrayList<>();
         for (int j = 0; j < dots.length; j += 2) {
             cords.add(new Coord(dots[j], dots[j + 1]));
         }
+        leftTopCoord = getLeftTopCoord();
+        rightBottomCoord = getRightBottomCoord();
+    }
+
+
+    private Coord getLeftTopCoord() {
+        int x = cords.get(0).getX();
+        int y = cords.get(0).getY();
+        for (Coord coord : cords) {
+            if (x > coord.getX()) x = coord.getX();
+            if (y > coord.getY()) y = coord.getY();
+        }
+        return new Coord(x, y);
+    }
+
+    private Coord getRightBottomCoord() {
+        int x = cords.get(0).getX();
+        int y = cords.get(0).getY();
+        for (Coord coord : cords) {
+            if (x < coord.getX()) x = coord.getX();
+            if (y < coord.getY()) y = coord.getY();
+        }
+        return new Coord(x, y);
+
     }
 
     public static Figures getRandomFigure() {
